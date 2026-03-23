@@ -1,0 +1,116 @@
+[
+  {
+    "model": "resort.resort",
+    "pk": 1,
+    "fields": {
+      "title": "Aurora Lake Resort",
+      "region": "issyk_kul_north",
+      "location": "Чолпон-Ата",
+      "description": "Современный семейный комплекс на северном берегу Иссык-Куля с бассейном, зелёной территорией и удобным доступом к пляжу.",
+      "short_description": "Комфортный отдых у озера с бассейном и семейной атмосферой.",
+      "price_from": 6500,
+      "rating": "4.8",
+      "image_url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+      "has_pool": true,
+      "has_wifi": true,
+      "has_parking": true,
+      "featured": true,
+      "created_at": "2026-03-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "resort.resort",
+    "pk": 2,
+    "fields": {
+      "title": "Sun Coast Guest House",
+      "region": "issyk_kul_south",
+      "location": "Боконбаево",
+      "description": "Уютный гостевой дом для спокойного отдыха на южном берегу Иссык-Куля. Подходит для пар и небольших семей.",
+      "short_description": "Тихий отдых на южном берегу по доступной цене.",
+      "price_from": 3800,
+      "rating": "4.5",
+      "image_url": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      "has_pool": false,
+      "has_wifi": true,
+      "has_parking": true,
+      "featured": true,
+      "created_at": "2026-03-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "resort.resort",
+    "pk": 3,
+    "fields": {
+      "title": "Altyn-Kol Family Resort",
+      "region": "issyk_kul_north",
+      "location": "Бостери",
+      "description": "Большая территория, детская зона, открытый бассейн и просторные номера. Один из удобных вариантов для семейного отдыха.",
+      "short_description": "Семейный пансионат с большой территорией и детской зоной.",
+      "price_from": 7200,
+      "rating": "4.9",
+      "image_url": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80",
+      "has_pool": true,
+      "has_wifi": true,
+      "has_parking": true,
+      "featured": true,
+      "created_at": "2026-03-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "resort.resort",
+    "pk": 4,
+    "fields": {
+      "title": "Bishkek Weekend Hotel",
+      "region": "bishkek",
+      "location": "Бишкек",
+      "description": "Городской вариант для коротких поездок и деловых встреч с удобной локацией и современными номерами.",
+      "short_description": "Современный отель в Бишкеке для деловых и туристических поездок.",
+      "price_from": 5400,
+      "rating": "4.4",
+      "image_url": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+      "has_pool": false,
+      "has_wifi": true,
+      "has_parking": true,
+      "featured": false,
+      "created_at": "2026-03-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "resort.resort",
+    "pk": 5,
+    "fields": {
+      "title": "Nomad Village Eco Camp",
+      "region": "chui",
+      "location": "Кегеты",
+      "description": "Эко-отдых в горах, деревянные домики, красивый вид и чистый воздух. Хорошо подходит для выходных на природе.",
+      "short_description": "Эко-комплекс в горах для спокойного отдыха на природе.",
+      "price_from": 4500,
+      "rating": "4.6",
+      "image_url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "has_pool": false,
+      "has_wifi": false,
+      "has_parking": true,
+      "featured": false,
+      "created_at": "2026-03-20T10:00:00Z"
+    }
+  },
+  {
+    "model": "resort.resort",
+    "pk": 6,
+    "fields": {
+      "title": "Osh Plaza Stay",
+      "region": "osh",
+      "location": "Ош",
+      "description": "Комфортный вариант в Оше для гостей города, с хорошим сервисом, Wi‑Fi и парковкой.",
+      "short_description": "Городской вариант в Оше с удобной локацией.",
+      "price_from": 4300,
+      "rating": "4.3",
+      "image_url": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80",
+      "has_pool": false,
+      "has_wifi": true,
+      "has_parking": true,
+      "featured": false,
+      "created_at": "2026-03-20T10:00:00Z"
+    }
+  }
+]

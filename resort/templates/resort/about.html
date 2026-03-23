@@ -1,0 +1,30 @@
+{% extends 'resort/base.html' %}
+{% block title %}О проекте - Nomad Resort{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <h1>О проекте</h1>
+    <p>Учебный веб-проект на Django для демонстрации каталога объектов отдыха.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container cards-grid two-col">
+    <div class="card info-card">
+      <h3>Технологии</h3>
+      <p>Django, HTML5, CSS3, JavaScript, SQLite, Django Auth.</p>
+    </div>
+    <div class="card info-card">
+      <h3>Что умеет сайт</h3>
+      <p>Показывает каталог, даёт искать и фильтровать объекты, поддерживает регистрацию и сохранение в избранное.</p>
+    </div>
+    <div class="card info-card">
+      <h3>Структура</h3>
+      <p>Многостраничный проект с отдельными шаблонами, отдельными CSS и JS файлами, разнесённой логикой по views/forms/models.</p>
+    </div>
+    <div class="card info-card">
+      <h3>Для диплома и защиты</h3>
+      <p>Подходит как база для доработки: можно добавить бронирование, оплату, отзывы и панель менеджера.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

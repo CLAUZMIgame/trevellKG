@@ -1,0 +1,62 @@
+{% extends 'resort/base.html' %}
+{% block title %}Главная - Nomad Resort{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">Django + HTML + CSS + JS</span>
+      <h1>Каталог пансионатов и баз отдыха Кыргызстана</h1>
+      <p>Готовый учебный проект с многостраничной структурой, авторизацией, отдельными CSS/JS файлами, каталогом, поиском, карточками и формой заявки.</p>
+      <div class="hero-actions">
+        <a href="{% url 'catalog' %}" class="btn">Открыть каталог</a>
+        <a href="{% url 'register' %}" class="btn btn-outline">Создать аккаунт</a>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><strong>{{ stats.resorts }}+</strong><span>объектов</span></div>
+        <div class="stat-card"><strong>{{ stats.regions }}</strong><span>регионов</span></div>
+        <div class="stat-card"><strong>{{ stats.requests }}+</strong><span>заявок</span></div>
+      </div>
+    </div>
+    <div class="hero-panel card">
+      <h3>Что уже реализовано</h3>
+      <ul class="feature-list">
+        <li>Главная страница</li>
+        <li>Каталог с фильтрами</li>
+        <li>Детальная страница объекта</li>
+        <li>Регистрация и вход</li>
+        <li>Профиль и избранное</li>
+        <li>Форма заявки</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Популярные варианты</h2>
+      <a href="{% url 'catalog' %}">Смотреть все</a>
+    </div>
+    <div class="cards-grid">
+      {% for resort in featured_resorts %}
+      <article class="card resort-card reveal">
+        <img src="{{ resort.image_url }}" alt="{{ resort.title }}">
+        <div class="card-body">
+          <div class="card-topline">
+            <span class="tag">{{ resort.get_region_display }}</span>
+            <span class="rating">★ {{ resort.rating }}</span>
+          </div>
+          <h3>{{ resort.title }}</h3>
+          <p>{{ resort.short_description }}</p>
+          <div class="card-meta">
+            <span>{{ resort.location }}</span>
+            <strong>от {{ resort.price_from }} сом</strong>
+          </div>
+          <a href="{% url 'resort_detail' resort.pk %}" class="btn btn-small">Подробнее</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

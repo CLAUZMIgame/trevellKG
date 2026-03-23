@@ -1,0 +1,83 @@
+{% extends 'resort/base.html' %}
+{% block title %}Каталог - Nomad Resort{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <h1>Каталог пансионатов</h1>
+    <p>Выбери подходящее место для отдыха по региону, рейтингу и удобствам.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container layout-grid">
+    <aside class="card filter-box">
+      <h3>Фильтры</h3>
+      <form method="get" class="filter-form">
+        <input type="text" name="search" value="{{ query_params.search }}" placeholder="Поиск по названию или городу">
+        <select name="region">
+          <option value="">Все регионы</option>
+          {% for value, label in regions %}
+          <option value="{{ value }}" {% if query_params.region == value %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+        <select name="service">
+          <option value="">Любые удобства</option>
+          <option value="pool" {% if query_params.service == 'pool' %}selected{% endif %}>Есть бассейн</option>
+          <option value="wifi" {% if query_params.service == 'wifi' %}selected{% endif %}>Есть Wi‑Fi</option>
+        </select>
+        <select name="ordering">
+          <option value="">По умолчанию</option>
+          <option value="price" {% if query_params.ordering == 'price' %}selected{% endif %}>Сначала дешевле</option>
+          <option value="rating" {% if query_params.ordering == 'rating' %}selected{% endif %}>Сначала рейтинг</option>
+        </select>
+        <button class="btn" type="submit">Применить</button>
+      </form>
+    </aside>
+
+    <div>
+      <div class="cards-grid two-col">
+        {% for resort in resorts %}
+        <article class="card resort-card">
+          <img src="{{ resort.image_url }}" alt="{{ resort.title }}">
+          <div class="card-body">
+            <div class="card-topline">
+              <span class="tag">{{ resort.get_region_display }}</span>
+              <span class="rating">★ {{ resort.rating }}</span>
+            </div>
+            <h3>{{ resort.title }}</h3>
+            <p>{{ resort.short_description }}</p>
+            <div class="facilities">
+              {% if resort.has_pool %}<span>Бассейн</span>{% endif %}
+              {% if resort.has_wifi %}<span>Wi‑Fi</span>{% endif %}
+              {% if resort.has_parking %}<span>Парковка</span>{% endif %}
+            </div>
+            <div class="card-meta">
+              <span>{{ resort.location }}</span>
+              <strong>от {{ resort.price_from }} сом</strong>
+            </div>
+            <a href="{% url 'resort_detail' resort.pk %}" class="btn btn-small">Подробнее</a>
+          </div>
+        </article>
+        {% empty %}
+        <div class="card empty-state">
+          <h3>Ничего не найдено</h3>
+          <p>Попробуй изменить фильтры или поисковый запрос.</p>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% if is_paginated %}
+      <div class="pagination">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">← Назад</a>
+        {% endif %}
+        <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Вперёд →</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

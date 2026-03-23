@@ -1,0 +1,31 @@
+{% extends 'resort/base.html' %}
+{% block title %}Профиль - Nomad Resort{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="container">
+    <h1>Личный кабинет</h1>
+    <p>Привет, {{ user.first_name|default:user.username }}.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="card info-card">
+      <h3>Избранные объекты</h3>
+      <div class="cards-grid two-col">
+        {% for item in favorites %}
+        <article class="card resort-card">
+          <img src="{{ item.resort.image_url }}" alt="{{ item.resort.title }}">
+          <div class="card-body">
+            <h3>{{ item.resort.title }}</h3>
+            <p>{{ item.resort.short_description }}</p>
+            <a href="{% url 'resort_detail' item.resort.pk %}" class="btn btn-small">Перейти</a>
+          </div>
+        </article>
+        {% empty %}
+        <p>Пока избранного нет. Добавь понравившиеся варианты из каталога.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

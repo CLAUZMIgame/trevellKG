@@ -1,0 +1,47 @@
+{% extends 'resort/base.html' %}
+{% block title %}{{ resort.title }} - Nomad Resort{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container detail-grid">
+    <div>
+      <img class="detail-image" src="{{ resort.image_url }}" alt="{{ resort.title }}">
+      <div class="card detail-content">
+        <div class="card-topline">
+          <span class="tag">{{ resort.get_region_display }}</span>
+          <span class="rating">★ {{ resort.rating }}</span>
+        </div>
+        <h1>{{ resort.title }}</h1>
+        <p class="muted">{{ resort.location }}</p>
+        <p>{{ resort.description }}</p>
+        <div class="facilities large">
+          {% if resort.has_pool %}<span>Бассейн</span>{% endif %}
+          {% if resort.has_wifi %}<span>Wi‑Fi</span>{% endif %}
+          {% if resort.has_parking %}<span>Парковка</span>{% endif %}
+        </div>
+        <div class="detail-bar">
+          <strong>Стоимость: от {{ resort.price_from }} сом / сутки</strong>
+          {% if user.is_authenticated %}
+          <form method="post" action="{% url 'toggle_favorite' resort.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="next_url" value="{{ request.path }}">
+            <button class="btn btn-outline" type="submit">{% if is_favorite %}Убрать из избранного{% else %}В избранное{% endif %}</button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <aside class="card booking-card">
+      <h3>Оставить заявку</h3>
+      <form method="post" class="booking-form">
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.phone }}
+        {{ form.email }}
+        {{ form.message }}
+        <button class="btn" type="submit">Отправить</button>
+      </form>
+    </aside>
+  </div>
+</section>
+{% endblock %}
